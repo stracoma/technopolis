@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "472217175127",
+    "project_id": "technopolis-25",
+    "storage_bucket": "technopolis-25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472217175127:android:6b3873d4c9ff564b954f12",
+        "android_client_info": {
+          "package_name": "com.example.technopolis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEZmPKPFnmvAUWwA-izPfdixy_jlvmXLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
