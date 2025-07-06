@@ -30,7 +30,18 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       home: Scaffold(
-        appBar: AppBar(title: const Text('Jnane technopolis')),
+        backgroundColor: Colors.blue[100],
+        appBar: AppBar(
+          title: const Text(
+            'Jnane technopolis',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.blue[800],
+        ),
         body: const ConnexionForm(),
       ),
       routes: {
@@ -89,6 +100,11 @@ class _ConnexionFormState extends State<ConnexionForm> {
           ),
           const SizedBox(height: 24),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[800],
+              foregroundColor: Colors.white,
+              minimumSize: const Size(double.infinity, 50),
+            ),
             onPressed: _onConnexionPressed,
             child: const Text('Connexion'),
           ),

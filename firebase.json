@@ -1,1 +1,36 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"technopolis-25","appId":"1:472217175127:android:6b3873d4c9ff564b954f12","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"technopolis-25","configurations":{"android":"1:472217175127:android:6b3873d4c9ff564b954f12","web":"1:472217175127:web:7f15d49f8eb72b56954f12"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "technopolis-25",
+          "appId": "1:472217175127:android:6b3873d4c9ff564b954f12",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "technopolis-25",
+          "configurations": {
+            "android": "1:472217175127:android:6b3873d4c9ff564b954f12",
+            "web": "1:472217175127:web:7f15d49f8eb72b56954f12"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

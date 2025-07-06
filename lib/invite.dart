@@ -12,7 +12,18 @@ class InvitePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Cotisations')),
+      backgroundColor: Colors.blue[100],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[800],
+        title: const Text(
+          'Cotisations',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 18,
+          ),
+        ),
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('syndic')
@@ -38,7 +49,7 @@ class InvitePage extends StatelessWidget {
             itemBuilder: (context, index) {
               final data = docs[index].data() as Map<String, dynamic>;
               final nom = data['nom'] ?? '---';
-              final numero = data['numero'] ?? '---';
+              final numero = data['numero']?.toString() ?? '';
               final inscription = (data['inscription'] as Timestamp?)?.toDate();
               final dernierMoisPaye = (data['dernierMoisPaye'] as Timestamp?)
                   ?.toDate();
@@ -47,24 +58,47 @@ class InvitePage extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        nom,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              nom,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue[800],
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            if (inscription != null)
+                              Text('Inscription : ${moisEtAnnee(inscription)}'),
+                            if (dernierMoisPaye != null)
+                              Text(
+                                'Dernier mois payé : ${moisEtAnnee(dernierMoisPaye)}',
+                              ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Text('Numéro $numero'),
-                      if (inscription != null)
-                        Text('Inscription : ${moisEtAnnee(inscription)}'),
-                      if (dernierMoisPaye != null)
-                        Text(
-                          'Dernier mois payé : ${moisEtAnnee(dernierMoisPaye)}',
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.blue[800],
+                          shape: BoxShape.circle,
                         ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          numero,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

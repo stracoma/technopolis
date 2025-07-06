@@ -132,7 +132,18 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Cotisations')),
+      backgroundColor: Colors.blue[100],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[800],
+        title: const Text(
+          'Cotisations',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('syndic')
@@ -178,9 +189,10 @@ class _AdminPageState extends State<AdminPage> {
                           children: [
                             Text(
                               nom,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.blue[800],
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -199,6 +211,7 @@ class _AdminPageState extends State<AdminPage> {
                         child: Center(
                           child: IconButton(
                             icon: const Icon(Icons.edit),
+                            color: Colors.blue[800],
                             onPressed: () async {
                               if (dernierMoisPaye != null) {
                                 final picked = await showDatePicker(
