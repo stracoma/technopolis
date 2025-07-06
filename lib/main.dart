@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:technopolis/admin.dart';
 import 'package:technopolis/invite.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initializeDateFormatting(
+    'fr_FR',
+    null,
+  ); // Initialise les formats français
   runApp(const MyApp());
 }
 
@@ -13,13 +23,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Connexion',
+      supportedLocales: const [Locale('fr', 'FR')],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       home: Scaffold(
         appBar: AppBar(title: const Text('Jnane technopolis')),
         body: const ConnexionForm(),
       ),
       routes: {
-        'admin': (context) => AdminPage(),
-        'invite': (context) => InvitePage(),
+        '/admin': (context) => const AdminPage(),
+        '/invite': (context) => const InvitePage(),
       },
     );
   }
@@ -44,9 +60,9 @@ class _ConnexionFormState extends State<ConnexionForm> {
   void _onConnexionPressed() {
     String password = _passwordController.text;
     if (password == 'taiba25') {
-      Navigator.pushNamed(context, 'admin');
+      Navigator.pushNamed(context, '/admin');
     } else if (password == 'techno25') {
-      Navigator.pushNamed(context, 'invite');
+      Navigator.pushNamed(context, '/invite');
     } else {
       ScaffoldMessenger.of(
         context,
