@@ -136,7 +136,7 @@ class _AdminPageState extends State<AdminPage> {
       appBar: AppBar(
         backgroundColor: Colors.blue[800],
         title: const Text(
-          'Cotisations',
+          'Situation des cotisations',
           style: TextStyle(
             fontSize: 18,
             color: Colors.white,

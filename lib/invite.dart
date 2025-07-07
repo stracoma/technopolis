@@ -16,7 +16,7 @@ class InvitePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blue[800],
         title: const Text(
-          'Cotisations',
+          'Situation des cotisations',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
